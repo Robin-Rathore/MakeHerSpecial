@@ -1,13 +1,12 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../../context/authContext";
 import "./login.scss";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import toast, { Toaster } from 'react-hot-toast';
 import { RxCross1 } from "react-icons/rx";
 
-const Login = ({ setAuthPage, setLoginPage }) => {
+const Login = ({ setUserLoggedIn, setAuthPage, setLoginPage }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,6 +17,8 @@ const Login = ({ setAuthPage, setLoginPage }) => {
         email, password
       })
       if(data.success){
+        setUserLoggedIn(true);
+        navigate("/UserProfile");
         console.log("Loged In Sucessfully");
         toast.success("Logedin Successfully");
       }

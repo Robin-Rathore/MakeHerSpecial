@@ -8,7 +8,7 @@ import { RiMenu2Line } from "react-icons/ri";
 import { useAppSelector } from "../redux/hooks";
 import search from "../assets/img/search.svg"
 import "./Navbar.scss"
-const Navbar = ({ setShowCart, setAuthPage }) => {
+const Navbar = ({setUserLoggedIn,  setShowCart, setAuthPage }) => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
   useEffect(() => {
@@ -213,13 +213,13 @@ const Navbar = ({ setShowCart, setAuthPage }) => {
           <div className={` flex items-center ${viewportWidth <= 480} ? gap-5 : gap-10 `}>
             <FaUser size={25}
              className=" nav-icons text-DarkColor cursor-pointer"
-             onClick={() => viewportWidth <= 480 ? navigate("/register") : setAuthPage(true)}
+             onClick={() => viewportWidth <= 480 ? navigate("/register") : (setUserLoggedIn === true ? navigate("/UserProfile") : setAuthPage(true))}
              />
             <div className=" nav-icons text-DarkColor relative">
               <FaShoppingCart
                 size={25}
                 className=" cursor-pointer"
-                onClick={() => setShowCart(true)}
+                onClick={() => {setShowCart(true), setAuthPage(true)}}
               />
               <div className=" absolute top-[-15px] right-[-10px] bg-red-600 w-[22px] h-[20px] rounded-full text-white text-sm grid place-items-center">
                 {cartCount}

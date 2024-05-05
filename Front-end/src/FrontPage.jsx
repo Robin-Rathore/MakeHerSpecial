@@ -12,17 +12,20 @@ import Products from "./components/Products";
 import Collections from "./components/Collections";
 import Footer from "./components/Footer";
 import Slider from "./components/Slider.jsx";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes, useNavigate } from "react-router-dom";
 import Register from "./Auth/Register";
 import Login from "./Auth/Login";
 import TopSlider from "./components/TopSlider";
+import UserProfile from "./components/UserProfile";
 
 
 const FrontPage = () => { 
     const [showCart, setShowCart] = useState(false);
     const [authPage, setAuthPage] = useState(false);
     const [loginPage, setLoginPage] = useState(false);
+    const [userLoggedIn, setUserLoggedIn] = useState(false);
 
+    const navigate = useNavigate();
     const toggleAuthPage = () => {
       setAuthPage(!authPage);
       if (!authPage) {
@@ -43,11 +46,13 @@ const FrontPage = () => {
   return (
     <div>
       <Provider store={store}>
-        <Navbar setShowCart={setShowCart} setAuthPage={toggleAuthPage} />
+        <Navbar setUserLoggedIn={setUserLoggedIn} setShowCart={setShowCart} setAuthPage={toggleAuthPage} />
+        {showCart && userLoggedIn && <Cart setShowCart={setShowCart} />}
 
-        {showCart && <Cart setShowCart={setShowCart} />}
-        {authPage && <Register setAuthPage={toggleAuthPage} setLoginPage={toggleLoginPage} />}
-        {loginPage && <Login setAuthPage={toggleAuthPage} setLoginPage={toggleLoginPage} />}
+        {authPage && showCart && !userLoggedIn &&<Register setUserLoggedIn={setUserLoggedIn}  setAuthPage={toggleAuthPage} setLoginPage={toggleLoginPage} />}
+        {console.log("USeR Looged in : ", userLoggedIn)}
+        {authPage  && <Register setUserLoggedIn={setUserLoggedIn}  setAuthPage={toggleAuthPage} setLoginPage={toggleLoginPage} />}
+        {loginPage  && <Login setUserLoggedIn={setUserLoggedIn} setAuthPage={toggleAuthPage} setLoginPage={toggleLoginPage} />}
         {!showCart && !authPage && !loginPage && <TopSlider/>}
         <div id="home">
            <Home />

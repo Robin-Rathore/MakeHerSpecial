@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import { RxCross1 } from "react-icons/rx";
 
-const Register = ({ setAuthPage, setLoginPage }) => {
+const Register = ({ setUserLoggedIn, setAuthPage, setLoginPage }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -28,6 +28,8 @@ const Register = ({ setAuthPage, setLoginPage }) => {
             name,email,password,address,phone, role
         })
       if(data.success){
+        setUserLoggedIn(true);
+        navigate("/UserProfile");
         toast.success("Registered Successfully")
       }
     } catch (error) {

@@ -8,6 +8,7 @@ import Login from "./Auth/Login";
 import Register from "./Auth/Register";
 import SearchPage from "./components/SearchPage";
 import ProductDetails from "./components/ProductDetails";
+import UserProfile from "./components/UserProfile";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
             <Route exact path="/register" element={<Register />} />
             <Route path="/product-details/:id" element={<ProductDetails />} />
             <Route path="/payment-page/:id" element={< PaymentPage />} />
+            <Route path="/UserProfile" element={< UserProfile />} />
           </Routes>
         </BrowserRouter>
       </Provider>
