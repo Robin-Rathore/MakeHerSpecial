@@ -1,0 +1,30 @@
+.containers{
+    width: 100%;
+    padding: 40px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px !important;
+}
+.item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.item img{
+    width: 80px !important;
+
+}
+.item button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

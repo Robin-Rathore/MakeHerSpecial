@@ -1,0 +1,91 @@
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+
+.boxe{
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  cursor: pointer;
+  width: 382px;
+  padding: 10px 20px;
+  background: #fff;
+  border-radius: 30px;
+  // box-shadow: 0 10px 25px rgba(0, 0, 0 , 0.3);
+  @include mobile(){
+      width: 360px;
+      height: 35px;
+      padding: 25px 20px;
+      margin-top: 5px;
+  }
+}
+
+.boxe:hover input{
+  width: 280px;
+  @include mobile(){
+      width: 280px;
+  }
+}
+// .box:click input{
+//     width: 280px;   
+// }
+.boxe input{
+  width: 0;
+  outline: none;
+  border: none;
+  font-weight: 500;
+  transition: 0.8s;
+  background: transparent;
+}
+.boxe a .fas{
+  color: #1daf;
+  font-size: 18px;
+}
+
+.title{
+    margin: 30px 20px;
+    font-size: 17px;
+}
+.search-container {
+    position: relative;
+  }
+  
+  .recent-searches {
+    background-color: white;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  .recent-searches div {
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .recent-searches div:hover {
+    background-color: #f0f0f0;
+  }
+
+  .head{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .cont{
+    padding: 10px;
+  }
+  .container-fluid{
+    padding: 10px;
+  }
+  .best-seller{
+    padding: 30px 10px;
+    font-size: 17px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
