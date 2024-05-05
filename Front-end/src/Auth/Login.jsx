@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./login.scss";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import toast from "react-hot-toast"
+import toast, { Toaster } from 'react-hot-toast';
 import { RxCross1 } from "react-icons/rx";
 
 const Login = ({ setAuthPage, setLoginPage }) => {
@@ -17,8 +17,8 @@ const Login = ({ setAuthPage, setLoginPage }) => {
       const {data} = await axios.post("http://localhost:3000/api/v1/user/login",{
         email, password
       })
-      if(data.sucess){
-        // console.log(data.message);
+      if(data.success){
+        console.log("Loged In Sucessfully");
         toast.success("Logedin Successfully");
       }
     }catch(error){
